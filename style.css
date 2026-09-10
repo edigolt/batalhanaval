@@ -1,0 +1,273 @@
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Share+Tech+Mono&display=swap');
+
+:root {
+  --oliva-escuro: #2b3320;
+  --oliva: #3f4a2c;
+  --musgo: #55603e;
+  --caqui: #a9a37e;
+  --areia: #d9d2a7;
+  --ferrugem: #a3541f;
+  --preto-tatico: #181c13;
+  --alerta: #c94f2e;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-height: 100vh;
+  font-family: 'Share Tech Mono', monospace;
+  color: var(--areia);
+  background-color: var(--oliva-escuro);
+  background-image:
+    radial-gradient(ellipse 220px 140px at 10% 20%, var(--musgo) 40%, transparent 41%),
+    radial-gradient(ellipse 180px 260px at 85% 15%, var(--preto-tatico) 40%, transparent 41%),
+    radial-gradient(ellipse 260px 180px at 70% 65%, var(--musgo) 40%, transparent 41%),
+    radial-gradient(ellipse 200px 200px at 20% 80%, var(--preto-tatico) 40%, transparent 41%),
+    radial-gradient(ellipse 300px 160px at 45% 40%, var(--caqui) 12%, transparent 45%);
+  background-blend-mode: multiply;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 20px;
+}
+
+h1 {
+  font-family: 'Black Ops One', 'Share Tech Mono', monospace;
+  font-size: 38px;
+  margin-bottom: 25px;
+  text-align: center;
+  letter-spacing: 3px;
+  color: var(--areia);
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 20px;
+  margin-bottom: 20px;
+  color: var(--caqui);
+}
+
+h2 span {
+  color: var(--areia);
+  font-weight: bold;
+}
+
+form {
+  position: relative;
+  width: 100%;
+  max-width: 430px;
+  background: var(--oliva);
+  border: 2px solid var(--preto-tatico);
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* cantos estilo "colchete" de HUD tático */
+form::before,
+form::after,
+#tabuleiro::before,
+#tabuleiro::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 3px solid var(--ferrugem);
+}
+
+form::before { top: -2px; left: -2px; border-right: none; border-bottom: none; }
+form::after { top: -2px; right: -2px; border-left: none; border-bottom: none; }
+
+form label {
+  font-size: 14px;
+  font-weight: bold;
+  color: var(--caqui);
+  margin-top: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+form input,
+form select {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--preto-tatico);
+  background: var(--preto-tatico);
+  color: var(--areia);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+form input:focus,
+form select:focus {
+  border-color: var(--ferrugem);
+}
+
+button {
+  border: 1px solid var(--preto-tatico);
+  border-radius: 0;
+  padding: 12px 20px;
+  margin-top: 10px;
+  background: var(--ferrugem);
+  color: var(--areia);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #8c451a;
+}
+
+button:active {
+  background: #733a16;
+}
+
+body > p,
+body > h2 {
+  text-align: center;
+}
+
+body > p {
+  background: var(--oliva);
+  border: 1px solid var(--preto-tatico);
+  padding: 8px 16px;
+  margin: 4px;
+  color: var(--caqui);
+  font-size: 14px;
+  letter-spacing: 0.5px;
+}
+
+body > p span {
+  color: var(--areia);
+  font-weight: bold;
+}
+
+#tabuleiro {
+  --tamanho: 10;
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(var(--tamanho), minmax(0, 45px));
+  aspect-ratio: 1 / 1;
+  width: min(90vw, calc(var(--tamanho) * 45px));
+  gap: 4px;
+  justify-content: center;
+  margin: 30px auto;
+  padding: 16px;
+  background: var(--preto-tatico);
+  border: 2px solid var(--musgo);
+}
+
+#tabuleiro::before { bottom: -2px; left: -2px; top: auto; border-right: none; border-top: none; }
+#tabuleiro::after { bottom: -2px; right: -2px; top: auto; border-left: none; border-top: none; }
+
+#tabuleiro button {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  border: 1px solid var(--oliva-escuro);
+  background: var(--oliva);
+  color: var(--caqui);
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background 0.15s, color 0.15s;
+}
+
+#tabuleiro button:hover {
+  background: var(--musgo);
+  color: var(--areia);
+}
+
+#mensagem {
+  min-height: 35px;
+  font-family: 'Black Ops One', 'Share Tech Mono', monospace;
+  font-size: 18px;
+  color: var(--ferrugem);
+  text-align: center;
+  margin: 10px;
+  letter-spacing: 1px;
+}
+
+#reiniciar {
+  display: none;
+}
+
+#voltar {
+  background: var(--musgo);
+}
+
+#voltar:hover {
+  background: var(--oliva);
+}
+
+#ranking {
+  width: 100%;
+  max-width: 500px;
+  margin: 10px 0 25px;
+  padding: 10px 10px 10px 55px;
+  background: var(--oliva);
+  border: 2px solid var(--preto-tatico);
+  list-style: none;
+  counter-reset: item;
+}
+
+#ranking li {
+  position: relative;
+  padding: 14px 15px 14px 20px;
+  margin: 7px 0;
+  background: var(--preto-tatico);
+  border-left: 4px solid var(--ferrugem);
+  color: var(--areia);
+  font-size: 16px;
+  font-weight: bold;
+  counter-increment: item;
+}
+
+#ranking li::before {
+  content: counter(item, decimal-leading-zero);
+  color: var(--ferrugem);
+  font-weight: bold;
+  margin-right: 12px;
+}
+
+@media (max-width: 600px) {
+
+  body {
+    padding: 25px 10px;
+  }
+
+  h1 {
+    font-size: 28px;
+  }
+
+  #tabuleiro {
+    width: min(90vw, calc(var(--tamanho) * 30px));
+    gap: 3px;
+    padding: 8px;
+  }
+
+  #tabuleiro button {
+    font-size: 12px;
+  }
+
+  form {
+    padding: 22px;
+  }
+
+}
